@@ -17,7 +17,3 @@ args:
         required: false 
         index: 1
         default_value: "."
-    - verbose:
-        short: v
-        multiple: true
-        help: Sets the level of verbosity
