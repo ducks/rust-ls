@@ -45,7 +45,7 @@ pub fn list_long() -> io::Result<()> {
             filename = filename.bold().to_string()
         }
 
-        println!("{} {} {} {}", mode, len, formatted, filename);
+        println!("{} {:5} {} {}", mode, len, formatted, filename);
     }
 
     Ok(())
