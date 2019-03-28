@@ -1,15 +1,14 @@
 use std::io;
 use std::fs::{self, DirEntry};
-use std::path::Path;
 use std::os::unix::fs::PermissionsExt;
 use chrono::prelude::*;
 use chrono::TimeZone;
 use colored::*;
-use std::time::{SystemTime, UNIX_EPOCH};
+use std::time::{UNIX_EPOCH};
+use std::path::PathBuf;
 
-pub fn list() -> io::Result<()> {
-    // TODO: add ability to pass in a dir
-    for entry in fs::read_dir(".")? {
+pub fn list(path: PathBuf) -> io::Result<()> {
+    for entry in fs::read_dir(path)? {
         let entry = entry?;
         let name = entry.file_name().into_string().unwrap();
         let meta = entry.metadata()?;
@@ -24,12 +23,11 @@ pub fn list() -> io::Result<()> {
     Ok(())
 }
 
-pub fn list_long() -> io::Result<()> {
-    // TODO: add ability to pass in a dir
+pub fn list_long(path: PathBuf) -> io::Result<()> {
     let count = fs::read_dir(".")?.count();
     println!("total {:?}", count);
 
-    for entry in fs::read_dir(".")? {
+    for entry in fs::read_dir(path)? {
         let entry = entry?;
         let mut filename = entry.file_name().into_string().unwrap();
         let meta = entry.metadata()?;

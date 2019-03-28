@@ -8,3 +8,4 @@ edition = "2018"
 clap = {version = "2.32", features = ["yaml"]}
 colored = "1.7"
 chrono = "0.4"
+structopt = "0.2"
